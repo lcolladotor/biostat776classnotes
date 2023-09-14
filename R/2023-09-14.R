@@ -12,42 +12,48 @@ g <- ggplot(maacs, aes(
     x = logpm25,
     y = NocturnalSympt
 ))
-summary(g)
-class(g)
 
-
-#| fig-cap: "Nothing to see here!"
-g <- maacs %>%
-    ggplot(aes(logpm25, NocturnalSympt))
-print(g)
-
-
-#| fig-cap: "Scatterplot of PM2.5 and days with nocturnal symptoms"
-g <- maacs %>%
-    ggplot(aes(logpm25, NocturnalSympt))
-g + geom_point()
-
-
-#| fig-cap: "Scatterplot with smoother"
-#| message: false
-g +
-    geom_point() +
-    geom_smooth()
-
-
-#| fig-cap: "Scatterplot with linear regression line"
-#| message: false
-g +
-    geom_point() +
-    geom_smooth(method = "lm")
-
-
-
-# try it yourself
 
 library("palmerpenguins")
 penguins
 
+penguins %>%
+    ggplot(aes(
+        x = flipper_length_mm,
+        y = bill_length_mm
+    ))
+
+penguins %>%
+    ggplot(aes(
+        x = flipper_length_mm,
+        y = bill_length_mm
+    )) +
+    geom_point()
+
+manual_color <- "blue"
+penguins %>%
+    ggplot(aes(
+        x = flipper_length_mm,
+        y = bill_length_mm
+    )) +
+    geom_point(color = manual_color)
+
+
+penguins %>%
+    ggplot(aes(
+        x = flipper_length_mm,
+        y = bill_length_mm,
+        color = species
+    )) +
+    geom_point()
+
+
+penguins %>%
+    ggplot(aes(
+        x = flipper_length_mm,
+        y = bill_length_mm
+    )) +
+    geom_point(aes(color = species))
 
 #| fig-width: 9
 #| fig-cap: "Scatterplot of PM2.5 and nocturnal symptoms by BMI category"
@@ -80,12 +86,26 @@ g +
         se = FALSE
     )
 
+g +
+    geom_point(aes(color = bmicat),
+        size = 2,
+        alpha = 1 / 10
+    ) +
+    geom_smooth(
+        linewidth = 4,
+        linetype = 3,
+        method = "lm",
+        se = FALSE
+    )
 
 #| fig-cap: "Modifying the theme for a plot"
 g +
     geom_point(aes(color = bmicat)) +
-    theme_bw(base_family = "Times")
+    theme_bw()
 
+g +
+    geom_point(aes(color = bmicat)) +
+    theme_bw(base_size = 30)
 
 
 # try it yourself
@@ -93,6 +113,31 @@ g +
 library("palmerpenguins")
 penguins
 
+penguins %>%
+    ggplot(aes(
+        x = flipper_length_mm,
+        y = bill_length_mm
+    )) +
+    geom_point(aes(color = species)) +
+    theme_dark(base_size = 20)
+
+penguins %>%
+    ggplot(aes(
+        x = flipper_length_mm,
+        y = bill_length_mm
+    )) +
+    geom_point(aes(color = species)) +
+    theme_dark(base_size = 20) +
+    theme(legend.position = "none")
+
+penguins %>%
+    ggplot(aes(
+        x = flipper_length_mm,
+        y = bill_length_mm
+    )) +
+    geom_point(aes(color = species)) +
+    theme_dark(base_size = 20) +
+    theme(legend.position = c(0.9, 0.1))
 
 #| fig-cap: "Modifying plot labels"
 g +
@@ -103,6 +148,14 @@ g +
         y = "Nocturnal Symptoms"
     )
 
+g +
+    geom_point(aes(color = bmicat)) +
+    labs(title = "MAACS Cohort") +
+    labs(
+        x = expression("log " * PM[2.5]),
+        y = "Nocturnal Symptoms",
+        caption = "biostat776"
+    )
 
 #| fig-cap: "Time series plot with base graphics"
 testdat <- data.frame(
