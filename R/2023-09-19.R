@@ -1,5 +1,7 @@
 
 x <- 1
+
+leo <- 1:1000
 print(x)
 x
 msg <- "hello"
@@ -8,7 +10,25 @@ msg <- "hello"
 #| error: true
 x <-  ## Incomplete expression
 
+## head(leo)
+# [1] 1 2 3 4 5 6
 
+# a
+# b
+# c
+# d
+# e
+
+if (2 > 1) {
+    x
+}
+
+for (i in 1:3) {
+    print(i)
+}
+
+library(SummarizedExperiment)
+?SummarizedExperiment
 
 x <- 5  ## nothing printed
 x       ## auto-printing occurs
@@ -30,7 +50,40 @@ options(old)
 
 
 5:0
+seq(5, 0, by = -1)
+seq(0, 10, by = 2)
+
 -15:15
+
+
+list(
+    'x' = x,
+    'sequence' = 1:3
+)
+
+list(
+    'group' = letters[1:3],
+    'sequence' = 1:3
+)
+
+data.frame(
+    list(
+        'group' = letters[1:3],
+        'sequence' = 1:3
+    )
+)
+
+df <- data.frame(
+    'group' = letters[1:3],
+    'sequence' = 1:3
+)
+df$incomplete <- c("A", NA, NA)
+df$twostep <- NA
+df$twostep[1] <- "A"
+
+df$twostep_code <- NA
+df$twostep_code[df$sequence == 1] <- "A"
+
 
 
 
@@ -40,6 +93,15 @@ vector(mode = "character", length = 4)
 
 
 
+1L
+class(1L)
+i <- 1L
+class(i)
+j <- 2.3
+class(j)
+c(1L, 2.3)
+class(c(1L, 2.3))
+
 x <- c(0.5, 0.6)       ## numeric
 x <- c(TRUE, FALSE)    ## logical
 x <- c(T, F)           ## logical
@@ -47,6 +109,11 @@ x <- c("a", "b", "c")  ## character
 x <- 9:29              ## integer
 x <- c(1+0i, 2+4i)     ## complex
 
+
+l <- list(
+    'group' = letters[1:3],
+    'sequence' = 1:3
+)
 
 #| warning: true
 typeof(4)
@@ -84,7 +151,10 @@ y <- c(1.7, "a")
 y <- c(TRUE, 2)
 y <- c("a", TRUE)
 
-
+logic <- sample(c(TRUE, FALSE), 100, replace = TRUE, prob = c(0.3, 0.7))
+mean(logic)
+as.numeric(logic)
+mean(as.integer(logic))
 
 ## try it here
 
@@ -95,6 +165,12 @@ x <- 0:6
 class(x)
 as.numeric(x)
 as.logical(x)
+as.numeric(
+    as.logical(x)
+)
+c(2.3, 3.5)
+as.integer(c(2.3, 3.5))
+as.integer(c(2.3, 3.9))
 as.character(x)
 
 
@@ -114,12 +190,14 @@ m <- matrix(nrow = 2, ncol = 3)
 m
 dim(m)
 attributes(m)
-
+attributes(m)$dim
 
 
 m <- matrix(1:6, nrow = 2, ncol = 3)
 m
 
+m2 <- matrix(1:6, nrow = 2, ncol = 3, byrow = TRUE)
+m2
 
 
 ## try it here
@@ -137,8 +215,7 @@ m
 x <- 1:3
 y <- 10:12
 cbind(x, y)
-
-
+rbind(y, x)
 
 ## try it here
 
@@ -157,6 +234,7 @@ x
 
 x <- factor(c("yes", "yes", "no", "yes", "no"))
 x
+relevel(x, "yes")
 table(x)
 ## See the underlying representation of factor
 unclass(x)
@@ -171,10 +249,15 @@ unclass(x)
 x <- factor(c("yes", "yes", "no", "yes", "no"))
 x  ## Levels are put in alphabetical order
 x <- factor(c("yes", "yes", "no", "yes", "no"),
-            levels = c("yes", "no"))
+    levels = c("yes", "no"))
 x
 
+x <- factor(c("yes", "yes", "no", "yes", "no", "maybe"),
+    levels = c("yes", "no"))
+x
 
+x <- factor(c("yes", "yes", "no", "yes", "no", "maybe"))
+relevel(x, "yes")
 
 ## Create a vector with NAs in it
 x <- c(1, 2, NA, 10, 3)
