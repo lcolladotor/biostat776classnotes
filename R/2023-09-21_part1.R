@@ -1,3 +1,12 @@
+i <- 0
+if (i >= 4) {
+    print("2. hello")
+} else if(i >= 3) {
+    print("1. hola")
+} else {
+    print("3. try again")
+}
+
 
 x <- runif(n = 1, min = 0, max = 10)
 x
@@ -28,6 +37,12 @@ y <- if (x > 3) {
 
 y
 
+y <- if (x > 3) {
+    10
+} else {
+    0
+}
+
 
 #| message: false
 # try it yourself
@@ -36,13 +51,24 @@ library(tidyverse)
 library(palmerpenguins)
 penguins
 
+penguin_random_species <- rnorm(n = 1, mean = 0, sd = 1)
+if (penguin_random_species > 0) {
+    filter(penguins, species == "Chinstrap")
+} else {
+    filter(penguins, species == "Gentoo")
+}
+
 
 
 for (i in 1:10) {
     print(i)
 }
 
-
+for (i in 1:1000) {
+    if (i %% 100 == 0) {
+        print(i)
+    }
+}
 
 ## define the loop to iterate over
 x <- c("a", "b", "c", "d")
@@ -107,6 +133,29 @@ for (i in 1:4) print(x[i])
 
 
 # try it yourself
+penguin_means <- vector("numeric", ncol(penguins))
+names(penguin_means) <- colnames(penguins)
+for (penguin_column in colnames(penguins)) {
+    penguin_means[penguin_column] <- if (is.numeric(penguins[[penguin_column]])) {
+        mean(penguins[[penguin_column]], na.rm = TRUE)
+    } else {
+        NA
+    }
+}
+penguin_means
+
+
+penguin_means <- vector("numeric", ncol(penguins))
+names(penguin_means) <- colnames(penguins)
+for (penguin_column in colnames(penguins)) {
+    current_var <- penguins[[penguin_column]]
+    penguin_means[penguin_column] <- if (is.numeric(current_var)) {
+        mean(current_var, na.rm = TRUE)
+    } else {
+        NA
+    }
+}
+penguin_means
 
 
 
@@ -150,11 +199,20 @@ print(z)
 -2:2
 ((-2:2) >= 0) & ((-2:2) <= 0)
 
-
+if (((-2:2) >= 0) & ((-2:2) <= 0)) {
+    print("hola")
+}
 
 (2 >= 0) && (-2 <= 0)
 (-2 >= 0) && (-2 <= 0)
 
+
+any(((-2:2) >= 0) & ((-2:2) <= 0))
+all(((-2:2) >= 0) & ((-2:2) <= 0))
+
+if (any(((-2:2) >= 0) & ((-2:2) <= 0))) {
+    print("hola")
+}
 
 #| eval: false
 ## x0 <- 1
