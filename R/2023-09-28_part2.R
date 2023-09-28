@@ -53,6 +53,14 @@ error_if_n_is_greater_than_zero <- function(n) {
 
 error_if_n_is_greater_than_zero(5)
 
+error_if_n_is_greater_than_zero_live <- function(n) {
+    stopifnot(n <= 0)
+    n_squared <- n^2
+    stopifnot(n_squared < 10)
+    n_squared
+}
+error_if_n_is_greater_than_zero_live(-2)
+error_if_n_is_greater_than_zero_live(-10)
 
 ## -----------------------------------------------------------------------------------
 #| warning: true
