@@ -76,7 +76,8 @@ flights %>%
 
 ## -----------------------------------------------------------------------------------
 flights %>%
-    select(year, month, day, hour, minute)
+    select(year, month, day, hour, minute) %>%
+    mutate(departure = make_datetime(year, month, day, hour = hour, min = minute))
 
 
 ## -----------------------------------------------------------------------------------
@@ -153,6 +154,7 @@ class(x)
 
 ## -----------------------------------------------------------------------------------
 x + 3 * 60 * 60 # add 3 hours
+x + 10800
 
 
 ## -----------------------------------------------------------------------------------
@@ -207,6 +209,10 @@ second(x)
 hour(x)
 week(x)
 
+## Adding 1 month, question from a student
+x
+month(x) <- month(x) + 1
+x
 
 ## -----------------------------------------------------------------------------------
 #| warning: false
@@ -226,6 +232,20 @@ names(storm)
 library(dplyr)
 
 # try it yourself
+storm %>%
+    select(BEGIN_DATE_TIME, EVENT_TYPE, DEATHS_DIRECT) %>%
+    mutate(begin = dmy_hms(BEGIN_DATE_TIME)) %>%
+    rename(deaths = DEATHS_DIRECT, type = EVENT_TYPE)
+
+
+
+
+
+
+
+
+
+
 
 
 ## -----------------------------------------------------------------------------------
