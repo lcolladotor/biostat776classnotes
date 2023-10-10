@@ -37,6 +37,9 @@ levels(y)
 ## -----------------------------------------------------------------------------------
 y_typo <- factor(x_typo, levels = month_levels)
 y_typo
+if (any(is.na(y_typo))) {
+    stop("Looks like we have missing data!")
+}
 
 
 ## -----------------------------------------------------------------------------------
@@ -195,7 +198,47 @@ library(palmerpenguins)
 penguins
 
 ## Try it out
+bill_length_summary <- penguins %>%
+    group_by(species) %>%
+    summarise(
+        bill_length_mm = mean(bill_length_mm, na.rm = TRUE),
+        n = n()
+    )
 
+bill_length_summary %>% ggplot(
+    aes(
+        x = bill_length_mm,
+        y = species
+    )
+) +
+    geom_point()
+
+
+
+bill_length_summary %>%
+    mutate(species = fct_reorder(.f = species, .x = bill_length_mm)) %>%
+    ggplot(
+        aes(
+            x = bill_length_mm,
+            y = species
+        )
+    ) +
+    geom_point()
+
+
+bill_length_summary %>%
+    ggplot(
+        aes(
+            x = bill_length_mm,
+            y = fct_rev(fct_reorder(.f = species, .x = bill_length_mm))
+        )
+    ) +
+    geom_point() +
+    ylab("Species")
+
+
+x <- bill_length_summary %>%
+    mutate(species = fct_reorder(.f = species, .x = bill_length_mm))
 
 ## -----------------------------------------------------------------------------------
 #| fig-alt: >
@@ -313,6 +356,11 @@ gss_cat %>%
 ## -----------------------------------------------------------------------------------
 ordered(c("a", "b", "c"))
 
+
+model.matrix(~ factor(c("a", "b", "c")))
+model.matrix(~ ordered(c("a", "b", "c")))
+
+model.matrix(~ as.integer(factor(c("a", "b", "c"))))
 
 ## -----------------------------------------------------------------------------------
 options(width = 120)
