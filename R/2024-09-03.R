@@ -43,3 +43,34 @@ y ## Here we decided to assign the output of "x_2024.Rds" into the object "y"
 
 ## Save standings for later
 saveRDS(standings, file = here::here("data", "standings.Rds"))
+
+## Download 'data' from https://github.com/lcolladotor/jhustatcomputing/tree/main/data
+## This will download the full course from GitHub.
+usethis::use_course(
+    "lcolladotor/jhustatcomputing",
+    destdir = here::here()
+)
+
+## Now you can copy the "data" directory from
+## "lcolladotor-jhustatcomputing-(git sha 1 digits|letters)/data" to
+## "data"
+
+## Here we can do this automatically with this R code, though you can also
+## do it manually via a File Browser window.
+full_course_local <- dir(here::here(), pattern = "^lcolladotor-jhustatcomputing-", full.names = TRUE)
+full_course_local
+file.copy(
+    file.path(
+        full_course_local,
+        "data"
+    ),
+    here::here(),
+    overwrite = TRUE,
+    recursive = TRUE
+)
+
+## We can then delete the course contents if we want to
+unlink(
+    full_course_local,
+    recursive = TRUE
+)
