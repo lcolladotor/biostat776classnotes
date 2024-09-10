@@ -193,6 +193,14 @@ library("palmerpenguins")
 penguins
 
 
+## Answer to
+## https://lcolladotor.github.io/jhustatcomputing/posts/13-ggplot2-plotting-system-part-2/#smooth
+penguins %>%
+    ggplot(mapping = aes(x = flipper_length_mm, y = bill_length_mm, color = species)) +
+    geom_point() +
+    geom_smooth(method = "lm")
+
+
 ## ------------------------------------------------------------------------------------------------------------------------
 #| fig-width: 9
 #| fig-cap: "Scatterplot of PM2.5 and nocturnal symptoms by BMI category"
