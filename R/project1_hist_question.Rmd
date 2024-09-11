@@ -1,0 +1,41 @@
+---
+title: "Histogram"
+author: "Leonardo Collado Torres"
+date: "2024-09-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load packages we need.
+
+```{r "load packages"}
+library("tidyverse")
+library("here")
+```
+
+
+Read in the chocolate data, then explore it.
+
+```{r "read in data"}
+chocolate <- readRDS(here("data", "chocolate.RDS"))
+glimpse(chocolate)
+```
+
+Now we can make a histogram using base R graphics. You'll likely want to check <https://r-graphics.org/recipe-quick-histogram> for more information on how to make histograms with `ggplot2`.
+
+```{r}
+hist(chocolate$rating)
+```
+
+
+
+R session information.
+
+```{r "R session info"}
+options(width = 120)
+sessioninfo::session_info()
+```
+
