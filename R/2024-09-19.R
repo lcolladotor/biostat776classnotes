@@ -27,3 +27,11 @@ data.frame(
 )
 ## Q2b: Will this work?
 ## Q3b: How ill in_group look like?
+
+
+
+## Review %in% operator:
+## it returns a vector with length equal to the
+## length of the left side vector to %in%
+"b" %in% letters
+letters %in% "b"
