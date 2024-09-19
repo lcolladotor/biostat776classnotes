@@ -39,3 +39,14 @@ letters %in% "b"
 ## %in% is not to be confused with the in from:
 ##     for(i in vector)
 ##           ^
+
+## Explicit vs implicit printing in a for() loop
+for (i in 1:10) {
+    print(i)
+}
+i
+print(i)
+for (i in 1:10) {
+    i
+}
+i
