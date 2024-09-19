@@ -35,3 +35,7 @@ data.frame(
 ## length of the left side vector to %in%
 "b" %in% letters
 letters %in% "b"
+
+## %in% is not to be confused with the in from:
+##     for(i in vector)
+##           ^
