@@ -20,3 +20,6 @@ for (i in 1:5) {
     print(i)
 }
 ?print
+
+## Links shown in class today:
+# https://www.one-tab.com/page/232lwwfmQiGswv5DLgzhlg
