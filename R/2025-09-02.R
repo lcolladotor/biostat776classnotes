@@ -32,3 +32,6 @@ read.csv(path_to_standings)
 
 ## Read in chocolate R object data
 choco <- readRDS(here::here("data", "chocolate.RDS"))
+
+## Links shown in class today:
+## https://www.one-tab.com/page/9bO4IwuERIe7kz8Kz9c12A
