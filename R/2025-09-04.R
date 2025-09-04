@@ -62,6 +62,10 @@ benchmarkme::get_ram()
 ## For locating the data
 library("here")
 
+## Download the chicago.rds file from
+## https://github.com/lcolladotor/jhustatcomputing/blob/main/data/chicago.rds
+## and save it under your data/ folder
+
 ## Read in the chicago dataset
 chicago <- readRDS(here("data", "chicago.rds"))
 class(chicago)
