@@ -82,9 +82,31 @@ glimpse(penguins)
 ## ---------------------------------------------------------------------------------------------------
 # try it yourself
 
+## Install palmerpenguins if you haven't already
+## with:
+## install.packages("palmerpenguins")
+library("tidyverse")
 library("palmerpenguins")
 penguins
 
+## Instructions of what we want to do:
+## Now that we are familiar with palmerpenguins let’s make a scatter plot with flipper_length_mm on the x-axis, bill_length_mm on the y-axis, colored by species, and a smoother by adding a linear regression.
+## Hint: use geom_point() and geom_smooth(method = "lm")
+g <- penguins %>%
+    ggplot(aes(
+        x = flipper_length_mm,
+        y = bill_length_mm,
+        color = species
+    )) +
+    geom_point() +
+    geom_smooth(method = "lm")
+g
+
+## Using colors on maacs dataset
+maacs %>%
+    ggplot(aes(logpm25, NocturnalSympt, color = bmicat)) +
+    geom_point() +
+    geom_smooth(method = "lm")
 
 ## ---------------------------------------------------------------------------------------------------
 #| fig-width: 9
@@ -132,6 +154,16 @@ g +
 library("palmerpenguins")
 penguins
 
+## Let's make a plot using the dark theme from ggplot2
+g <- penguins %>%
+    ggplot(aes(
+        x = flipper_length_mm,
+        y = bill_length_mm,
+        color = species
+    )) +
+    geom_point() +
+    geom_smooth(method = "lm")
+g + theme_dark()
 
 ## ---------------------------------------------------------------------------------------------------
 #| fig-cap: "Modifying plot labels"
@@ -355,3 +387,6 @@ g +
 ## ---------------------------------------------------------------------------------------------------
 options(width = 120)
 sessioninfo::session_info()
+
+## Links from class today:
+## https://www.one-tab.com/page/NQD0_zfrR6KPBK9nYGu-rg
