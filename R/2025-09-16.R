@@ -6,29 +6,29 @@
 # install.packages(c("ellmer", "chattr"))
 # 
 # ## Load both packages
-# library("ellmer")
-# library("chattr")
+library("ellmer")
+library("chattr")
 # 
 # ## Specify that you'll use the GitHub Copilot model
-# my_chat <- ellmer::chat_github()
-# chattr::chattr_use(my_chat)
+my_chat <- ellmer::chat_github()
+chattr::chattr_use(my_chat)
 # 
 # ## Load some packages for analysis
-# library("tidyverse")
+library("tidyverse")
 # 
 # ## Load the penguins dataset to have something we can
 # ## explore with
-# library("palmerpenguins")
-# glimpse(penguins)
+library("palmerpenguins")
+glimpse(penguins)
 # 
 # ## You can now either interact with the LLM through
 # ## commands like this one:
-# my_chat$chat("Explore the relationship between bill_length_mm and bill_depth_mm across species and island using ggplot2 color aesthetics and facets.")
-# my_chat$chat("What do we know the variables in the penguins dataset?")
-# my_chat$chat("Please provide me a more detailed description and code for exploring this dataset")
+my_chat$chat("Explore the relationship between bill_length_mm and bill_depth_mm across species and island using ggplot2 color aesthetics and facets.")
+my_chat$chat("What do we know the variables in the penguins dataset?")
+my_chat$chat("Please provide me a more detailed description and code for exploring this dataset")
 # 
 # ## or launch the chattr app
-# chattr::chattr_app()
+chattr::chattr_app()
 # 
 # ## Edit the option to include at least 1 data frame.
 # ## Then type the following prompt:
