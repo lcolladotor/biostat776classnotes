@@ -37,6 +37,13 @@ library(tidyverse)
 library(palmerpenguins)
 penguins
 
+x <- rnorm(1)
+d <- if (x > 0) {
+    filter(penguins, species == "Chinstrap")
+} else {
+    filter(penguins, species == "Gentoo")
+}
+table(d$species)
 
 ## -----------------------------------------------------------------------------
 for (i in 1:10) {
