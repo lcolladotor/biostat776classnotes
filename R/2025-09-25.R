@@ -87,3 +87,16 @@ print_message3_cli(1:9)
 
 ## Links from class today:
 ## https://www.one-tab.com/page/La4Nuh6KTD2yrNfpNpS53w
+
+wdf <- data.frame(
+    city_name = c("New York", "Los Angeles", "Chicago", "Houston", "Phoenix"),
+    population = c(8419600, 3980400, 2716000, 2328000, 1690000),
+    area_sq_miles = c(302.6, 468.7, 227.3, 637.5, 517.6)
+)
+
+library("tidyverse")
+filter_wdf_by_city <- function(city_name) {
+    wdf |> dplyr::filter(city_name == !!city_name)
+}
+
+filter_wdf_by_city("Chicago")
