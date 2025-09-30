@@ -80,6 +80,10 @@ flights %>%
 
 ## ------------------------------------------------------------------------------------------------------------------------
 # try it yourself
+flights %>%
+    select(year, month, day, hour, minute) %>%
+    mutate(departure = make_datetime(year, month, day, hour, minute))
+
 
 ## ------------------------------------------------------------------------------------------------------------------------
 today()
@@ -137,6 +141,7 @@ x <- ymd("2012-01-01", tz = "") ## Midnight
 y <- dmy_hms("9 Jan 2011 11:34:21", tz = "")
 x - y ## this works
 
+## Links from class today: https://www.one-tab.com/page/WrPT4MlFSDSSLcbBK11kcg
 
 ## ----error=TRUE----------------------------------------------------------------------------------------------------------
 x < y ## this works
