@@ -100,3 +100,30 @@ filter_wdf_by_city <- function(city_name) {
 }
 
 filter_wdf_by_city("Chicago")
+
+
+library("here")
+rainfall <- readRDS(here("data", "tuesdata_rainfall.RDS"))
+
+library("tidyverse")
+
+rainfall %>%
+    drop_na() %>%
+    unite(col = "date", year, month, day, sep = "-") %>%
+    mutate(
+        date = ymd(date),
+        city_name = str_to_upper(city_name),
+        year = year(date)
+    )
+
+
+rainfall %>%
+    drop_na() %>%
+    mutate(
+        temp_date = paste(year, month, day)
+    ) %>%
+    mutate(
+        date = ymd(temp_date),
+        city_name = str_to_upper(city_name),
+        year = year(date)
+    )
