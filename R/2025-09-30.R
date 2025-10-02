@@ -233,8 +233,16 @@ names(storm)
 ## ------------------------------------------------------------------------------------------------------------------------
 #| message: false
 library(dplyr)
+library(lubridate)
 
 # try it yourself
+storm_sub_live <- storm |>
+    select(BEGIN_DATE_TIME, EVENT_TYPE, DEATHS_DIRECT) |>
+    mutate(begin = dmy_hms(BEGIN_DATE_TIME)) |>
+    rename(type = EVENT_TYPE, deaths = DEATHS_DIRECT) |>
+    select(begin, type, deaths)
+storm_sub_live
+
 
 ## ------------------------------------------------------------------------------------------------------------------------
 #| echo: false
