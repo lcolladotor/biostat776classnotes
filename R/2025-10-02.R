@@ -61,6 +61,14 @@ grepl("(xx)*", "Maryland")
 
 ## ---------------------------------------------------------------------------------------------------
 ## try it out
+# Does “zz” appear 1 or more times?
+# Does “ee” appear 1 or more times?
+# Does “oo” appear 0 or more times?
+# Does “ii” appear 0 or more times?
+grepl("(zz)+", "spookyhalloween")
+grepl("(ee)+", "spookyhalloween")
+grepl("(oo)*", "spookyhalloween")
+grepl("(ii)*", "spookyhalloween")
 
 ## ---------------------------------------------------------------------------------------------------
 # Does "Mississippi" contain exactly 2 adjacent "s" ?
@@ -88,6 +96,34 @@ grepl("(i.{2}){3}", "Mississippi")
 
 ## ---------------------------------------------------------------------------------------------------
 ## try it out
+# Let’s practice a few out together. Make the following regular expressions for the character string “spookyspookyhalloweenspookyspookyhalloween”:
+#
+# Search for “spooky” exactly 2 times. What about 3 times?
+grepl("(spooky){2}", "spookyspookyhalloweenspookyspookyhalloween")
+grepl("spookyspooky", "spookyspookyhalloweenspookyspookyhalloween") # raised hand
+# grepl("spookyy", "spookyspookyhalloweenspookyspookyhalloween") # crossed hands
+
+grepl("(spooky){3}", "spookyspookyhalloweenspookyspookyhalloween")
+
+# Search for “spooky” exactly 2 times followed by any character of length 9 (i.e. “halloween”).
+grepl("(spooky){2}.{9}", "spookyspookyhalloweenspookyspookyhalloween")
+
+# Same search as above, but search for that twice in a row.
+grepl("((spooky){2}.{9}){2}", "spookyspookyhalloweenspookyspookyhalloween")
+grepl(
+    "spookyspooky.........spookyspooky.........",
+    "spookyspookyhalloweenspookyspookyhalloween"
+)
+
+# Same search as above, but search for that three times in a row.
+grepl("((spooky){2}.{9}){3}", "spookyspookyhalloweenspookyspookyhalloween")
+grepl(
+    "spookyspooky.........spookyspooky.........spookyspooky.........",
+    "spookyspookyhalloweenspookyspookyhalloween"
+)
+
+## Links from class today:
+## https://www.one-tab.com/page/7OVvBS4hTMqehJIusSgR3Q
 
 ## ---------------------------------------------------------------------------------------------------
 #| error: true
