@@ -26,3 +26,30 @@ if (
     library("fortunes")
     cowsay::say("fortune", by = "cow")
 }
+
+
+grepl("[a-m]", tolower("ABC"))
+
+
+# 1. Calculate the average bill_length_mm for each species
+# 2. Create a scatter plot showing the average for each species.
+# 3. Go back and reorder the factor species based on the average bill length from largest to smallest.
+# 4. Now order it from smallest to largest
+library("tidyverse")
+library("palmerpenguins")
+library("forcats")
+
+args(fct_reorder)
+penguins %>%
+    group_by(species) %>%
+    summarize(avg_bill_length = mean(bill_length_mm, na.rm = TRUE)) %>%
+    mutate(species = fct_reorder(species, avg_bill_length, .desc = TRUE)) %>%
+    ggplot(aes(x = species, y = avg_bill_length)) +
+    geom_point()
+
+penguins %>%
+    group_by(species) %>%
+    summarize(avg_bill_length = mean(bill_length_mm, na.rm = TRUE)) %>%
+    mutate(species = fct_reorder(species, avg_bill_length, .desc = FALSE)) %>%
+    ggplot(aes(x = species, y = avg_bill_length)) +
+    geom_point()
