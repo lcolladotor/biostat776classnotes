@@ -22,5 +22,7 @@ if (
         'To install cowsay and fortunes use: install.packages(c("cowsay", "fortunes"))\n'
     )
 } else {
+    library("cowsay")
+    library("fortunes")
     cowsay::say("fortune", by = "cow")
 }
