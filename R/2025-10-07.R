@@ -37,9 +37,16 @@ grepl("[a-m]", tolower("ABC"))
 # 4. Now order it from smallest to largest
 library("tidyverse")
 library("palmerpenguins")
-library("forcats")
 
-args(fct_reorder)
+penguins %>%
+    group_by(species) %>%
+    summarize(avg_bill_length = mean(bill_length_mm, na.rm = TRUE)) %>%
+    ggplot(aes(x = species, y = avg_bill_length)) +
+    geom_point()
+
+args(forcats::fct_reorder)
+?forcats::fct_reorder
+
 penguins %>%
     group_by(species) %>%
     summarize(avg_bill_length = mean(bill_length_mm, na.rm = TRUE)) %>%
