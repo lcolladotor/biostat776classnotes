@@ -30,3 +30,7 @@ stop("there's a bug that I need help with!")
 # Error:
 # ! there's a bug that I need help with!
 # devel >
+
+stop("there's a bug that I need help with!")
+#> Error:
+#> ! there's a bug that I need help with!
