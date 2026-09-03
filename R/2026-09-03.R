@@ -25,3 +25,8 @@ sessioninfo::session_info()
 
 ## Let's force an error
 stop("there's a bug that I need help with!")
+
+stop("there's a bug that I need help with!")
+# Error:
+# ! there's a bug that I need help with!
+# devel >
