@@ -21,3 +21,7 @@ install.packages("reprex")
 ## -----------------------------------------------------------------------------------------
 options(width = 120)
 sessioninfo::session_info()
+
+
+## Let's force an error
+stop("there's a bug that I need help with!")
