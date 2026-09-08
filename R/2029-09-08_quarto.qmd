@@ -7,7 +7,7 @@ format:
     fig-width: 8
     fig-height: 4
     code-fold: true
-bibliography: ../my-refs.bib
+bibliography: ../data/my-refs.bib
 ---
 
 ## Air Quality
