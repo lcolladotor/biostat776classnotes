@@ -1,7 +1,7 @@
 ---
 title: "ggplot2 demo"
 author: "Norah Jones"
-date: "5/22/2021"
+date: "09/09/2026"
 format: 
   html:
     fig-width: 8
@@ -22,4 +22,10 @@ library(ggplot2)
 ggplot(airquality, aes(Temp, Ozone)) + 
   geom_point() + 
   geom_smooth(method = "loess")
+```
+
+```{r}
+library("sessioninfo")
+options(width = 120)
+session_info()
 ```
