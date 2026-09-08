@@ -23,6 +23,9 @@ library(ggplot2)
 ggplot(airquality, aes(Temp, Ozone)) + 
   geom_point() + 
   geom_smooth(method = "loess")
+
+# Another example of R code
+2 * 10
 ```
 
 ```{r}
