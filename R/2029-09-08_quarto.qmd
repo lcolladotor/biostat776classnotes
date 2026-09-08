@@ -25,6 +25,8 @@ ggplot(airquality, aes(Temp, Ozone)) +
 ```
 
 ```{r}
+#| label: reproducibility
+#| echo: false
 library("sessioninfo")
 options(width = 120)
 session_info()
