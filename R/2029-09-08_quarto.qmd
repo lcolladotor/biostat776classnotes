@@ -7,7 +7,7 @@ format:
     fig-width: 8
     fig-height: 4
     code-fold: true
-bibliography: my-refs.bib
+bibliography: ../my-refs.bib
 ---
 
 ## Air Quality
@@ -32,6 +32,8 @@ Example multiplication with R
 # Another example of R code
 2 * 10
 ```
+
+Thank you `rmarkdown`! [@R-rmarkdown]
 
 ```{r}
 #| label: reproducibility
