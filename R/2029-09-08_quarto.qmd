@@ -18,6 +18,7 @@ format:
 #| fig-cap: "Temperature and ozone level."
 #| warning: false
 
+# Example ggplot2 code
 library(ggplot2)
 ggplot(airquality, aes(Temp, Ozone)) + 
   geom_point() + 
