@@ -6,3 +6,18 @@ x <- readLines(here("data", "team_standings.csv"))
 
 length(x)
 x[1]
+
+## Demo RData
+today <- "2026-09-10"
+save(x, today, file = here("data", "demo.RData"))
+
+## Simulating a new R session
+rm(list = ls())
+load(here("data", "demo.RData"), verbose = TRUE)
+
+## Quick demo Rds
+saveRDS(today, here("data", "today.rds"))
+tomorrow <- readRDS(here("data", "today.rds"))
+
+file.remove(here("data", "today.rds"))
+file.remove(here("data", "demo.RData"))
