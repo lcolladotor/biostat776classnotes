@@ -21,3 +21,16 @@ tomorrow <- readRDS(here("data", "today.rds"))
 
 file.remove(here("data", "today.rds"))
 file.remove(here("data", "demo.RData"))
+
+##
+df <- read.csv(here("data", "team_standings.csv"))
+class(df)
+
+## Managing tibbles
+chicago <- readRDS(here("data", "chicago.rds"))
+class(chicago)
+library("dplyr")
+as_tibble(chicago)
+
+## Interactively explore the data in an Excel-like window
+View(chicago)
