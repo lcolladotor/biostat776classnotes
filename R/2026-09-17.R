@@ -89,11 +89,11 @@ penguins
 
 ## Instructions:
 # Now that we are familiar with palmerpenguins let’s make a scatter plot with flipper_length_mm on the x-axis, bill_length_mm on the y-axis, colored by species, and a smoother by adding a linear regression.
-penguins |>
+pen <- penguins |>
   ggplot(aes(x = flipper_length_mm, y = bill_length_mm, color = species)) +
   geom_point() +
   geom_smooth(method = "lm")
-
+print(pen)
 ## -----------------------------------------------------------------------------
 #| fig-width: 9
 #| fig-cap: "Scatterplot of PM2.5 and nocturnal symptoms by BMI category"
@@ -140,6 +140,8 @@ g +
 library("palmerpenguins")
 penguins
 
+pen +
+  theme_dark(base_family = "Times")
 
 ## -----------------------------------------------------------------------------
 #| fig-cap: "Modifying plot labels"
