@@ -20,6 +20,8 @@ g <- ggplot(
 summary(g)
 class(g)
 
+## Notice how the data is stored in the @data slot
+str(g)
 
 ## -----------------------------------------------------------------------------
 #| fig-cap: "No data to see here!"
@@ -85,6 +87,12 @@ glimpse(penguins)
 library("palmerpenguins")
 penguins
 
+## Instructions:
+# Now that we are familiar with palmerpenguins let’s make a scatter plot with flipper_length_mm on the x-axis, bill_length_mm on the y-axis, colored by species, and a smoother by adding a linear regression.
+penguins |>
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm, color = species)) +
+  geom_point() +
+  geom_smooth(method = "lm")
 
 ## -----------------------------------------------------------------------------
 #| fig-width: 9
