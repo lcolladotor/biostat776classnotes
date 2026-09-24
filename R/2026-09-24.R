@@ -54,3 +54,19 @@ for (i in 1:10) {
   message(Sys.time(), " - working on iteration ", i)
   Sys.sleep(runif(n = 1, min = 5, max = 8))
 }
+
+## Contents of the example Qmd file I made:
+
+# ---
+# title: "Untitled"
+# format: html
+# ---
+#
+# ```{r}
+# temp <- runif(1, min = 0, max = 10)
+# temp <- 1.26
+# ```
+#
+# ```{r, eval = temp > 5, echo = temp > 5}
+# print("it's going be warm")
+# ```
